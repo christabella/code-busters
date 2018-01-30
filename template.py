@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+
+def solve(x):
+    pass
+
+
+if __name__ == "__main__":
+    cases = int(input())
+
+    for case in range(1, cases+1):
+        x = input()
+        print("Case #{}: {}".format(case, solve(x)))
