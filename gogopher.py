@@ -2,15 +2,12 @@ import sys
 import math
 import numpy as np
 
-dug = np.array([[0] * 1000] * 1000)
- 
-def solve(width, row, col):
-    global dug
+def solve(width, row, col, dug):
     current_square = dug[row-1:row+2, col-1:col+2]
     # If 3s3 square has been filled, move
     if sum([sum(x) for x in current_square]) == 9:
         col += 1  # move onto next column
-        if col > width:  # if the right edge of the rectangle has been reached
+        if col >= width:  # if the right edge of the rectangle has been reached
             col = 2  # reset column
             row += 1  # move onto next row
     # Keep digging at the same spot if the 3x3 square hasn't been filled
@@ -40,6 +37,6 @@ for case in range(1, cases+1):
 
     while True:
         try:
-            row, col = solve(width, row, col)
+            row, col = solve(width, row, col, dug)
         except:
             break
