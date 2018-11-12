@@ -25,8 +25,6 @@ def get_candidates(board, i, j):
                           3 * (j//3):3 * (j//3) + 3].flatten())
   return candidates
 
-candidates_dict = dict()
-
 def sudoku_solve(board):
   board = np.array(board)
   unfilled_coords = list(zip(*(np.where(board=='.'))))
@@ -44,7 +42,6 @@ def solve(board, coords, ptr):
   if ptr == len(coords):
     return True
   i, j = coords[ptr]
-  # We could actually cache the candidates for each (i, j)
   candidates = get_candidates(board, i, j)
   for c in candidates:
     # Write down tentative answer and try this branch
